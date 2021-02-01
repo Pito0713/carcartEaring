@@ -1,32 +1,45 @@
 <template>
   <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div>
-    <router-view/>
+    <Navbar  id="nav"/>
+    <carcart  id="Production"/>
+    <Footer />
   </div>
 </template>
+<script>
+import Navbar from './components/Navbar.vue'
+import carcart from './components/carcart.vue'
+import Footer from './components/Footer.vue'
 
-<style lang="scss">
+export default {
+  name: 'app',
+  data: function () {
+    return {
+    }
+  },
+  components: {
+    Navbar,
+    carcart,
+    Footer
+  },
+}
+</script>
+
+<style>
+@import './css/container.css';
+@import './css/css-variable.css';
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
+  font-family: "Avenir", Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  color: #2c3e50;
+  color: var(--text-color);
+  background-color: var(--product-bg-color);
 }
-
-#nav {
-  padding: 30px;
-
-  a {
-    font-weight: bold;
-    color: #2c3e50;
-
-    &.router-link-exact-active {
-      color: #42b983;
-    }
-  }
+a:link{
+  color:var(--text-color);
+}
+/* 已連結過 */
+a:visited{
+  color: var(--text-color);
 }
 </style>
