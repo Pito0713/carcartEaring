@@ -8,7 +8,7 @@
         <a href="https://www.instagram.com/miruku.acc/">follow</a>
       </button>
     </div>
-    <a>© 2020.09.30 By Pito</a>
+    <a>© 2021.02.20 By Pito</a>
   </div>
 </template>
 
