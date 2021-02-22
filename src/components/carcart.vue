@@ -2,6 +2,7 @@
   <div class="orderPage" id="app">
     <div class="cart">
       <div class="cartAllprice"><a>總金額  {{allPrice}}元</a></div>
+      <div class="cartItem">
       <div v-for="(Product,index) in Carts" :key="Product[0]+index" class="cartInfo">
         <div class="cartImg">
           <img :src="Product[7]" />
@@ -25,6 +26,7 @@
             </button>
           </div>
         </div>
+      </div>
       </div>
     </div>
     <div class="mender">
@@ -267,18 +269,19 @@ button {
   display: flex;
   flex: 50%;
   flex-direction: column;
+  
+}
+.cartItem{
   overflow: auto;
-  height: 500px;
+  height: 600px;
 }
 .cartAllprice{
   padding: 1rem;
-  width: 100%;
   font-size: 1.2rem;
   border-bottom: 1px solid var(--border-color)
 }
 .cartInfo {
   display: flex;
-  height: 100px;
   margin: 1rem;
 }
 .orderInfo{
@@ -309,6 +312,7 @@ button {
   }
 }
 .cartText {
+  padding: 1rem;
   flex: 60%;
   display: flex;
   height: 100%;
@@ -318,6 +322,7 @@ button {
 .cartButton {
   display: flex;
   justify-content: flex-end;
+  align-items: flex-end;
 }
 .errorborber{
     border:2px solid red;

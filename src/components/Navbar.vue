@@ -2,7 +2,6 @@
   <nav class="nav">
     <a class="logo"  href='https://pito0713.github.io/Demo/'>
       <img src="../img/logo.png" alt="logo" />
-      
     </a>
     <div class="navBranch">
       <ul>

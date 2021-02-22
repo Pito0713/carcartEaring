@@ -40,7 +40,7 @@
   }
 }
 .sciocal {
-  font-size: 1.5rem;
+  font-size: 3vw;
 }
 .my-2 {
   margin: 0 4vw;
