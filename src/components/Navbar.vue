@@ -56,8 +56,11 @@ export default {
   }
 }
 .navBranch .nav-Item {
-  padding: 0 1rem;
+  padding: 0 2vw;
 }
-@media screen and (max-width: 769px) {
+@media screen and (min-width: 1024px) {
+  .navBranch ul {
+  font-size: 1.5vw;
+}
 }
 </style>
