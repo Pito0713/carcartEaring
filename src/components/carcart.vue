@@ -550,6 +550,7 @@ button {
   flex: 50%;
   padding: 2vw;
   flex-direction: column;
+  font-size: 1.2rem;
 }
 .mendertable {
   border: 1px solid var(--border-color);
@@ -559,6 +560,7 @@ button {
   }
   .menderinput {
     width: 50%;
+    font-size: 1rem;
   }
 }
 .cartImg {

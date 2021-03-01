@@ -50,7 +50,7 @@ export default {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  font-size: 0.8rem;
+  font-size: 0.9rem;
   li {
     justify-content: end;
   }
