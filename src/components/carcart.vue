@@ -233,7 +233,7 @@ export default {
     },
     addCart(index) {
       let vm = this;
-      if (vm.ProdcutData[index][4] - 1 >= 0) {
+      if (vm.ProdcutData[vm.Carts[index][0]][4] - 1 >= 0) {
         vm.$set(vm.Carts[index], [4], vm.Carts[index][4] + 1);
         //console.log(vm.Carts[index][4]);
         vm.$set(
