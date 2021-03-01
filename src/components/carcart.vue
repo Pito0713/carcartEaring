@@ -27,7 +27,7 @@
                 <button @click="cutCart (index)">
                   <a>-1</a>
                 </button>
-                <i class="far fa-trash-alt" style="padding: 1rem;"></i>
+                <i class="far fa-trash-alt" style="padding: 1rem;" @click="trashCan(index)"></i>
               </div>
               <a>庫存剩 {{stk(Product[0])}}</a>
             </div>
@@ -106,6 +106,7 @@
         <button @click="check()">送出訂單</button>
       </div>
     </div>
+    <div class="reload" v-show="reload"> <a>重新載入</a></div>
   </div>
 </template>
 
@@ -123,7 +124,8 @@ export default {
       PhoneCheck: "",
       PhoneCheckisError: false,
       MailCheck: "",
-      MailCheckisError: false
+      MailCheckisError: false,
+      reload: false,
     };
   },
   components: {
@@ -327,6 +329,7 @@ export default {
           );
           vm.$set(vm.Carts[index], [4], "");
           //console.log(vm.ProdcutData[vm.Carts[index][0]]);
+          this.reload = !this.reload
           this.timer = setTimeout(() => {
             //延遲讓後台更新
             window.location.reload();
@@ -334,6 +337,84 @@ export default {
         }
       }
 
+      vm.TotalPrice(index);
+
+      var Cartsdata = [
+        [
+          vm.Carts[index][0],
+          vm.Carts[index][1],
+          vm.Carts[index][2],
+          vm.Carts[index][3],
+          vm.Carts[index][4],
+          vm.Carts[index][5],
+          vm.Carts[index][6],
+          vm.Carts[index][7],
+          vm.Carts[index][8],
+          vm.Carts[index][9]
+        ]
+      ];
+      var Cartsparameter = {};
+      Cartsparameter = {
+        url:
+          "https://docs.google.com/spreadsheets/d/1RJiDnmyc0MZ9ySQy4u8_8PZTJe90LZCkTIs_NCDSjS8/edit#gid=0",
+        name: "工作表1",
+        data: Cartsdata.toString(),
+        row: vm.ProdcutData[vm.Carts[index][0]][0] + 1,
+        column: vm.ProdcutData[vm.Carts[index][0]].length
+      };
+      $.get(
+        "https://script.google.com/macros/s/AKfycbz-k7jYi1VMPguXmuvf7W2cZFb39JZD9_QnnuBYbH9Okm5vb4Ui/exec",
+        Cartsparameter
+      );
+
+      var Prodcutdata = [
+        [
+          vm.ProdcutData[vm.Carts[index][0]][0],
+          vm.ProdcutData[vm.Carts[index][0]][1],
+          vm.ProdcutData[vm.Carts[index][0]][2],
+          vm.ProdcutData[vm.Carts[index][0]][3],
+          vm.ProdcutData[vm.Carts[index][0]][4],
+          vm.ProdcutData[vm.Carts[index][0]][5],
+          vm.ProdcutData[vm.Carts[index][0]][6],
+          vm.ProdcutData[vm.Carts[index][0]][7],
+          vm.ProdcutData[vm.Carts[index][0]][8],
+          vm.ProdcutData[vm.Carts[index][0]][9]
+        ]
+      ];
+      var Prodcutparameter = {};
+      Prodcutparameter = {
+        url:
+          "https://docs.google.com/spreadsheets/d/1nXquMbDuBjMx2Eo7qO1XBKNrJBm8xNGRGexuOFozlts/edit#gid=0",
+        name: "工作表1",
+        data: Prodcutdata.toString(),
+        row: vm.ProdcutData[vm.Carts[index][0]][0] + 1, // execl第2行開始
+        column: vm.ProdcutData[vm.Carts[index][0]].length
+      };
+      $.get(
+        "https://script.google.com/macros/s/AKfycbxQ5_HzD8ow_wRBH839AXXptKL_JqbA1DsiO55iwsL33pyhshUA/exec",
+        Prodcutparameter
+      );
+    },
+    trashCan(index) {
+      let vm = this;
+      var yes = confirm("你確定不要了嗎");
+        if (yes) {
+          alert("移出購物車了");
+
+          vm.$set(
+            vm.ProdcutData[vm.Carts[index][0]],
+            [4],
+            vm.ProdcutData[vm.Carts[index][0]][4] + vm.Carts[index][4]
+          );
+          vm.$set(vm.Carts[index], [4], "");
+          //console.log(vm.ProdcutData[vm.Carts[index][0]]);
+          this.reload = !this.reload
+          this.timer = setTimeout(() => {
+            //延遲讓後台更新
+            window.location.reload();
+          }, 1000);
+        }
+    
       vm.TotalPrice(index);
 
       var Cartsdata = [
@@ -511,6 +592,14 @@ button {
 }
 .errorborber {
   border: 2px solid red;
+}
+.reload{
+  display: block;
+  position: fixed;
+  top:50%;
+  left: calc(50% - 4rem);
+  background-color: var(--background-color);
+  font-size: 2rem;
 }
 @media screen and (min-width: 1024px) {
   .cartAllprice {
