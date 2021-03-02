@@ -50,7 +50,6 @@ export default {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  font-size: 0.9rem;
   li {
     justify-content: end;
   }
@@ -58,9 +57,5 @@ export default {
 .navBranch .nav-Item {
   padding: 0 2vw;
 }
-@media screen and (min-width: 1024px) {
-  .navBranch ul {
-  font-size: 1.5vw;
-}
-}
+
 </style>

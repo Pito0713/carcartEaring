@@ -16,7 +16,7 @@ let selectedIndex = {
   set: function(event) {
     this.$emit('input', event)
     // getter 由 value prop 傳進來
-    //當改變 <select> 選擇縣市值時，setter此時就可使用 this.$emit() 把event 傳出去重新選則的index值。
+    //當改變 <select> 選擇'縣市值'時，setter此時就可使用 this.$emit() 把event 傳出去重新選則的index值。
   }
 }
 

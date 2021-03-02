@@ -602,6 +602,7 @@ button {
   left: calc(50% - 4rem);
   background-color: var(--background-color);
   font-size: 2rem;
+  z-index:1;
 }
 @media screen and (min-width: 1024px) {
   .cartAllprice {
